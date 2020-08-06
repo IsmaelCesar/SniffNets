@@ -37,3 +37,25 @@ def resettv(samp=1):
                   #                   "end_value": int(299/samp)}
                   }
     return parameters
+
+
+def get_dataset_names_and_indexes():
+    """
+    Returns a dict object with the dataset names and a list of
+    integers as indexes for the each sub-dataset
+    """
+    return {'fonollosa': [0, 1, 2, 3, 4],
+            'turbulent_gas_mixtures': [0],
+            'windtunnel': [0, 1, 2, 3, 4, 5]
+            # Un comment the following line
+            # if you have been authorized to use the coffee dataset
+            # ,'coffee_dataset': [0]
+            }
+
+
+def get_wine_dataset_names_and_indexes():
+    """
+    Returns a dict object with the dataset names and a list of
+    integers as indexes for the each sub-dataset
+    """
+    return {"QWines-CsystemTR": [0], "QWinesEa-CsystemTR": [0]}

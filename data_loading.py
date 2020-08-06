@@ -177,3 +177,12 @@ def load_dataset(ds_choice, ds_idx, read_wine_datasets=False):
 
     return data, labels, n_classes, dataset_name, sub_dataset_name, input_shape
 
+
+def dataset_classes_number(dataset_name):
+    global DATA_SETS
+    return DATA_SETS[dataset_name]["n_classes"]
+
+
+def dataset_wine_classes_number(dataset_name):
+    global DS_WINE
+    return DS_WINE[dataset_name]
