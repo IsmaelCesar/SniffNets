@@ -69,7 +69,6 @@ def load_wine(ds_choice):
     """
     choices : 0 -> QWines-CsystemTR, 1 -> QWinesEa-CsystemTR
     :param ds_choice: the index naming the dataset chosen
-    :param ds_idx: the index if the folder containing the dataset has one or more datasets
     :return: the dataset read,the labels and  the number of classes
     """
     global DATA_FOLDER, DS_WINE, EXTENSION
