@@ -150,3 +150,31 @@ def split_datasamples_by_sensors(data):
         new_split.append(data[:, :, i])
         new_split[i] = new_split[i].reshape(new_split[i].shape[0], new_split[i].shape[1])
     return new_split
+
+
+def load_dataset(ds_choice, ds_idx, read_wine_datasets=False):
+    """
+    Loads the dataset from the experiment
+    :param ds_choice: Name of the dataset_chosen
+    :param ds_idx: index indicating wich subset should be loaded
+    :param read_wine_datasets:  True, if it is desired to read the wine dataset
+    :return: data_samples,
+            data labels,
+            name of the dataset and name of the data subset,
+            name of the input_shape
+    """
+    data = None
+    labels = None
+    dataset_name = None
+    sub_dataset_name = None
+    if not read_wine_datasets:
+        data, labels, n_classes, dataset_name, sub_dataset_name = load(ds_choice, ds_idx)
+    else:
+        data, labels, n_classes, dataset_name, sub_dataset_name = load_wine(ds_choice)
+
+    data = np.array(data)
+
+    input_shape = data[0].shape
+
+    return data, labels, n_classes, dataset_name, sub_dataset_name, input_shape
+
