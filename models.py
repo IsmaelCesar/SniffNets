@@ -11,6 +11,8 @@ from keras.layers import Dense
 from keras.layers import Input
 from keras.models import Model
 from keras.layers.merge import concatenate
+from sklearn.svm import SVC
+from sklearn.neighbors import KNeighborsClassifier as KNN
 
 
 def sniffnet(input_shape, n_classes):
@@ -96,4 +98,25 @@ def sniffmultinose(input_shape, n_classes):
     x_out = Dense(n_classes, activation='softmax', name="class")(layer_x)
 
     model = Model(inputs=inputs_list, outputs=x_out, name="SniffNetMultiNose")
+    return model
+
+
+def get_knn_classifier(n_neighbors):
+    return KNN(n_neighbors=3)
+
+
+def get_svm(m_gamma=8.3):
+    return SVC(gamma=m_gamma, C=10, kernel='rbf')
+
+
+def get_mlp(input_shape, n_classes):
+    x_input = Dense(100, input_shape=input_shape, activation='tanh')
+    x = Dense(30, activation='tanh')(x_input)
+    x = Dense(30, activation='tanh')(x)
+    x = Dense(30, activation='tanh')(x)
+    x = Dense(30, activation='tanh')(x)
+    x = Dense(30, activation='tanh')(x)
+    x = Dense(30, activation='tanh')(x)
+    x_out = Dense(n_classes, activation='softmax')(x)
+    model = Model(inputs=x_input, outputs=x_out, name='Simple MLP')
     return model
