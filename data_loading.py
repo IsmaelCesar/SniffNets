@@ -100,6 +100,8 @@ def load_and_split(ds_choice, ds_idx=0, read_wine_datasets=False):
     # Loading dataset
     data = None
     labels = None
+    dataset_name = ""
+    sub_dataset_name = ""
     if not read_wine_datasets:
         data, labels, n_classes, dataset_name, sub_dataset_name = load(ds_choice, ds_idx)
     else:
@@ -114,7 +116,7 @@ def load_and_split(ds_choice, ds_idx=0, read_wine_datasets=False):
     train_data, train_labels = sklearn.utils.shuffle(train_data, train_labels)
     test_data, test_labels = sklearn.utils.shuffle(test_data, test_labels)
 
-    return train_data, train_labels, test_data, test_labels
+    return train_data, train_labels, test_data, test_labels, dataset_name, sub_dataset_name
 
 
 def standardize_data(train_data, test_data, input_shape):
