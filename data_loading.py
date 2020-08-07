@@ -8,7 +8,7 @@ import logging
 import sklearn
 from sklearn.model_selection import train_test_split
 
-DATA_FOLDER = "data/"
+# DATA_FOLDER = "data/"
 
 EXTENSION = ".pkl"
 DATA_SETS = {
@@ -186,3 +186,8 @@ def dataset_classes_number(dataset_name):
 def dataset_wine_classes_number(dataset_name):
     global DS_WINE
     return DS_WINE[dataset_name]
+
+
+if __name__ == "data_loading":
+    global DATA_FOLDER
+    DATA_FOLDER = "data/"
