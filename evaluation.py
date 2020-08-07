@@ -40,8 +40,8 @@ def save_results_into_filesystem_windows(experiments_folder, model_folder, super
         # if window_size != "":
         #   os.mkdir(sub_exp_folder+"window_"+window_size+"/")
 
-    train_mean_acc, train_stdd_acc = calculate_mean_and_stdd(H.history["acc"])
-    val_mean_acc, val_stdd_acc = calculate_mean_and_stdd(H.history["val_acc"])
+    train_mean_acc, train_stdd_acc = calculate_mean_and_stdd(H.history["accuracy"])
+    val_mean_acc, val_stdd_acc = calculate_mean_and_stdd(H.history["val_accuracy"])
 
     with open(window_file + "eval.txt", 'w') as f:
         predictions = model.predict(test_data, batch_size=batch_size)
@@ -72,8 +72,8 @@ def evaluate_model_windows(test_data, test_labels, batch_size, model, n_epochs, 
     plt.figure()
     plt.plot(np.arange(0, n_epochs), H.history["loss"], label="train_loss")
     plt.plot(np.arange(0, n_epochs), H.history["val_loss"], label="val_loss")
-    plt.plot(np.arange(0, n_epochs), H.history["acc"], label="train_acc")
-    plt.plot(np.arange(0, n_epochs), H.history["val_acc"], label="val_acc")
+    plt.plot(np.arange(0, n_epochs), H.history["accuracy"], label="train_acc")
+    plt.plot(np.arange(0, n_epochs), H.history["val_accuracy"], label="val_acc")
     if window_size != "":
         plt.title("Training Loss and Accuracy Window "+window_size)
     else:
@@ -102,8 +102,8 @@ def save_results_into_filesystem(experiments_folder, model_folder, super_exp_fol
         # if window_size != "":
         #   os.mkdir(sub_exp_folder+"window_"+window_size+"/")
 
-    train_mean_acc, train_stdd_acc = calculate_mean_and_stdd(H.history["acc"])
-    val_mean_acc, val_stdd_acc = calculate_mean_and_stdd(H.history["val_acc"])
+    train_mean_acc, train_stdd_acc = calculate_mean_and_stdd(H.history["accuracy"])
+    val_mean_acc, val_stdd_acc = calculate_mean_and_stdd(H.history["val_accuracy"])
 
     with open("eval.txt", 'w') as f:
         predictions = model.predict(test_data, batch_size=batch_size)
@@ -135,8 +135,8 @@ def evaluate_model(test_data, test_labels, batch_size, model, n_epochs, H, exper
     plt.subplots()
     plt.plot(np.arange(0, n_epochs), H.history["loss"], label="train_loss")
     plt.plot(np.arange(0, n_epochs), H.history["val_loss"], label="val_loss")
-    plt.plot(np.arange(0, n_epochs), H.history["acc"], label="train_acc")
-    plt.plot(np.arange(0, n_epochs), H.history["val_acc"], label="val_acc")
+    plt.plot(np.arange(0, n_epochs), H.history["accuracy"], label="train_acc")
+    plt.plot(np.arange(0, n_epochs), H.history["val_accuracy"], label="val_acc")
     plt.title("Training Loss and Accuracy")
     plt.xlabel("Epoch #")
     plt.ylabel("Loss/Accuracy")
