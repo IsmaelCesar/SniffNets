@@ -86,7 +86,7 @@ def load_wine(ds_choice):
         data, labels, _, _ = pkl.load(d)
         d.close()
 
-    return data, labels, n_classes, dataset_name, None # sub_dataset_name
+    return data, labels, n_classes, "wine/ ", dataset_name # sub_dataset_name
 
 
 def data_set_reshaped(data_set):

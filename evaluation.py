@@ -81,6 +81,7 @@ def evaluate_model_windows(test_data, test_labels, batch_size, model, n_epochs, 
     plt.xlabel("Epoch #")
     plt.ylabel("Loss/Accuracy")
     plt.legend()
+    plt.show()
 
     if save_results:
         plt.savefig(window_file + "LossAccComparison.png")
